@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clínica Saúde & Vida</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --cor-primaria: #2c7da0;
+            --cor-secundaria: #468faf;
+            --cor-clara: #a9d6e5;
+            --cor-escura: #01497c;
+            --cor-texto: #333;
+            --cor-branca: #fff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .cabecalho {
+            background-color: var(--cor-primaria);
+            padding: 1rem;
+            position: fixed;
+            width: 100%;
+            z-index: 100;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            color: var(--cor-branca);
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .menu {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .menu a {
+            color: var(--cor-branca);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .banner {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://source.unsplash.com/1600x900/?hospital');
+            height: 100vh;
+            background-size: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--cor-branca);
+        }
+
+        .banner-content h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .servicos {
+            padding: 4rem 2rem;
+            background-color: var(--cor-clara);
+        }
+
+        .servicos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .servico-card {
+            background-color: var(--cor-branca);
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .servico-card i {
+            font-size: 2.5rem;
+            color: var(--cor-primaria);
+            margin-bottom: 1rem;
+        }
+
+        .contato {
+            padding: 4rem 2rem;
+            background-color: var(--cor-secundaria);
+            color: var(--cor-branca);
+        }
+
+        .contato-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .form-grupo {
+            margin-bottom: 1rem;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 0.5rem;
+            margin-top: 0.5rem;
+            border: none;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: var(--cor-escura);
+            color: var(--cor-branca);
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .menu {
+                display: none;
+            }
+
+            .banner-content h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="cabecalho">
+        <nav class="nav">
+            <div class="logo">Clínica Saúde & Vida</div>
+            <div class="menu">
+                <a href="#inicio">Início</a>
+                <a href="#servicos">Serviços</a>
+                <a href="#contato">Contato</a>
+            </div>
+        </nav>
+    </header>
+
+    <section id="inicio" class="banner">
+        <div class="banner-content">
+            <h1>Cuidando da sua saúde com excelência</h1>
+            <p>Atendimento humanizado e profissionais especializados</p>
+        </div>
+    </section>
+
+    <section id="servicos" class="servicos">
+        <div class="servicos-grid">
+            <div class="servico-card">
+                <i class="fas fa-heartbeat"></i>
+                <h3>Cardiologia</h3>
+                <p>Cuidados especializados para seu coração</p>
+            </div>
+            <div class="servico-card">
+                <i class="fas fa-brain"></i>
+                <h3>Neurologia</h3>
+                <p>Especialistas em saúde cerebral</p>
+            </div>
+            <div class="servico-card">
+                <i class="fas fa-bone"></i>
+                <h3>Ortopedia</h3>
+                <p>Tratamento para ossos e articulações</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contato" class="contato">
+        <div class="contato-container">
+            <h2>Entre em Contato</h2>
+            <form id="formulario-contato">
+                <div class="form-grupo">
+                    <label for="nome">Nome:</label>
+                    <input type="text" id="nome" required>
+                </div>
+                <div class="form-grupo">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div class="form-grupo">
+                    <label for="mensagem">Mensagem:</label>
+                    <textarea id="mensagem" rows="4" required></textarea>
+                </div>
+                <button type="submit">Enviar</button>
+            </form>
+        </div>
+    </section>
+
+    <script>
+        // Variáveis
+        let formulario = document.getElementById('formulario-contato');
+        let menuLinks = document.querySelectorAll('.menu a');
+
+        // Smooth scroll para os links do menu
+        menuLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                let targetId = link.getAttribute('href');
+                let targetSection = document.querySelector(targetId);
+                targetSection.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+
+        // Manipulação do formulário
+        formulario.addEventListener('submit', (e) => {
+            e.preventDefault();
+            let nome = document.getElementById('nome').value;
+            let email = document.getElementById('email').value;
+            let mensagem = document.getElementById('mensagem').value;
+            
+            // Aqui você pode adicionar a lógica para enviar os dados do formulário
+            alert(`Obrigado pelo contato, ${nome}! Em breve retornaremos no email: ${email}`);
+            formulario.reset();
+        });
+    </script>
+</body>
+</html>
